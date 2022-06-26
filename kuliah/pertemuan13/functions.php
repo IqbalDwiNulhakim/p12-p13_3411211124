@@ -29,7 +29,7 @@ function tambah($data)
   $conn = koneksi();
 
   $nama = htmlspecialchars($data['nama']);
-  $nrp = htmlspecialchars($data['nrp']);
+  $nim = htmlspecialchars($data['nim']);
   $email = htmlspecialchars($data['email']);
   $jurusan = htmlspecialchars($data['jurusan']);
   $gambar = htmlspecialchars($data['gambar']);
@@ -37,7 +37,7 @@ function tambah($data)
   $query = "INSERT INTO
               mahasiswa
             VALUES
-            (null, '$nama', '$nrp', '$email', '$jurusan', '$gambar');
+            (null, '$nama', '$nim', '$email', '$jurusan', '$gambar');
           ";
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
@@ -56,14 +56,14 @@ function ubah($data)
 
   $id = $data['id'];
   $nama = htmlspecialchars($data['nama']);
-  $nrp = htmlspecialchars($data['nrp']);
+  $nim = htmlspecialchars($data['nim']);
   $email = htmlspecialchars($data['email']);
   $jurusan = htmlspecialchars($data['jurusan']);
   $gambar = htmlspecialchars($data['gambar']);
 
   $query = "UPDATE mahasiswa SET
               nama = '$nama',
-              nrp = '$nrp',
+              nim = '$nim',
               email = '$email',
               jurusan = '$jurusan',
               gambar = '$gambar'
@@ -80,7 +80,7 @@ function cari($keyword)
   $query = "SELECT * FROM mahasiswa
               WHERE 
             nama LIKE '%$keyword%' OR
-            nrp LIKE '%$keyword%'
+            nim LIKE '%$keyword%'
           ";
 
   $result = mysqli_query($conn, $query);
